@@ -3,7 +3,10 @@ const router = express.Router();
 //import controllers
 const AuthController = require("../apps/controllers/auth");
 const AdminController = require("../apps/controllers/admin");
+
 const ProductController = require("../apps/controllers/product");
+
+const CategoriesController = require("../apps/controllers/categories");
 // ---------------admin-------------------------
 router.get("/admin/login", AuthController.login);
 router.get("/admin/logout", AuthController.logout);
@@ -28,17 +31,9 @@ router.get("/admin/users/delete", (req, res) => {
   res.send("/admin/users/delete");
 });
 // ---------------category-------------------------
-router.get("/categories", (req, res) => {
-  res.send("/categories");
-});
-router.get("/categories/create", (req, res) => {
-  res.send("/categories/create");
-});
-router.get("/categories/edit", (req, res) => {
-  res.send("/categories/edit");
-});
-router.get("/categories/delete", (req, res) => {
-  res.send("/categories/delete");
-});
+router.get("/categories", CategoriesController.categories);
+router.get("/categories/create", CategoriesController.create);
+router.get("/categories/edit", CategoriesController.edit);
+router.get("/categories/delete", CategoriesController.del);
 
 module.exports = router;
