@@ -1,27 +1,19 @@
 const express = require("express");
 const router = express.Router();
+//import controllers
+const AuthController = require("../apps/controllers/auth");
+const AdminController = require("../apps/controllers/admin");
+const ProductController = require("../apps/controllers/product");
 // ---------------admin-------------------------
-router.get("/admin/login", (req, res) => {
-  res.send("/admin/login");
-});
-router.get("/admin/logout", (req, res) => {
-  res.send("/admin/logout");
-});
-router.get("/admin/dashboard", (req, res) => {
-  res.send("/admin/dashboard");
-});
-router.get("/admin/products", (req, res) => {
-  res.send("/admin/products");
-});
-router.get("/admin/products/create", (req, res) => {
-  res.send("/admin/products/create");
-});
-router.get("/admin/products/edit", (req, res) => {
-  res.send("/admin/products/edit");
-});
-router.get("/admin/products/delete", (req, res) => {
-  res.send("/admin/products/delete");
-});
+router.get("/admin/login", AuthController.login);
+router.get("/admin/logout", AuthController.logout);
+
+router.get("/admin/dashboard", AdminController.index);
+
+router.get("/admin/products", ProductController.index);
+router.get("/admin/products/create", ProductController.create);
+router.get("/admin/products/edit", ProductController.eidt);
+router.get("/admin/products/delete", ProductController.del);
 // ---------------user-------------------------
 router.get("/admin/users", (req, res) => {
   res.send("/admin/users");
