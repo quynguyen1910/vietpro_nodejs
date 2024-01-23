@@ -7,8 +7,13 @@ const AdminController = require("../apps/controllers/admin");
 const ProductController = require("../apps/controllers/product");
 
 const CategoriesController = require("../apps/controllers/categories");
+// ---------------test1-------------------------
+const Test1Controller = require("../apps/controllers/test1");
+router.get("/test1", Test1Controller.test1);
+router.get("/test2", Test1Controller.test2);
 // ---------------admin-------------------------
 router.get("/admin/login", AuthController.login);
+router.post("/admin/login", AuthController.postLogin);
 router.get("/admin/logout", AuthController.logout);
 
 router.get("/admin/dashboard", AdminController.index);
